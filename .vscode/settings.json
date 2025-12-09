@@ -3,5 +3,8 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "terminal.integrated.env.osx": {
+       "PATH": "/Users/derrickmadumere/.nvm/versions/node/v22.14.0/bin:${env:PATH}"
+    }
 }
