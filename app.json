@@ -4,20 +4,24 @@
     "slug": "project-x",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./core/assets/images/icon.png",
     "scheme": "projectx",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "icon": {
+        "light": "./core/assets/images/ios-light.png",
+        "dark": "./core/assets/images/ios-dark.png",
+        "tinted": "./core/assets/images/ios-tinted.png"
+      },
       "supportsTablet": true,
       "bundleIdentifier": "com.kachielite.project-x"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./core/assets/images/android-icon-foreground.png",
-        "backgroundImage": "./core/assets/images/android-icon-background.png",
-        "monochromeImage": "./core/assets/images/android-icon-monochrome.png"
+        "backgroundColor": "#ffffff",
+        "foregroundImage": "./core/assets/images/android-icon.png",
+        "backgroundImage": "./core/assets/images/android-icon.png",
+        "monochromeImage": "./core/assets/images/android-icon.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
