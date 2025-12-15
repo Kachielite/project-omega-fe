@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="464d156c-b655-496c-8f4d-ebb509c8faaf" name="Changes" comment="refactor: simplify RootLayout and update package configurations" />
+    <list default="true" id="464d156c-b655-496c-8f4d-ebb509c8faaf" name="Changes" comment="refactor: simplify RootLayout and update package configurations">
+      <change afterPath="$PROJECT_DIR$/core/assets/images/splash-icon-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/assets/images/splash-icon-light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/android-icon-background.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/android-icon-background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/android-icon-foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/android-icon-foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/android-icon-monochrome.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/android-icon-monochrome.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/partial-react-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/partial-react-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/react-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/react-logo@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/react-logo@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/images/react-logo@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/splash-icon.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="setup" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,6 +49,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;features/splash-screen&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/derrickmadumere/WebstormProjects/project-x&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -48,6 +64,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/core/assets/images" />
+      <recent name="$PROJECT_DIR$/core/common" />
+      <recent name="$PROJECT_DIR$/core" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ios" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -81,6 +104,8 @@
       <option name="presentableId" value="Default" />
       <updated>1765257776714</updated>
       <workItem from="1765257778105" duration="399000" />
+      <workItem from="1765258191512" duration="3547000" />
+      <workItem from="1765823801261" duration="1704000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: simplify RootLayout and update package configurations">
       <option name="closed" value="true" />
@@ -98,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765258024197</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor: simplify RootLayout and update package configurations">
+      <option name="closed" value="true" />
+      <created>1765258215434</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765258215434</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
