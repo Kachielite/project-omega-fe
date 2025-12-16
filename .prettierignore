@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.expo
+.idea
+.next
+android
+ios
+web-build
+*.lock
