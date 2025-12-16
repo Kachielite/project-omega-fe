@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="464d156c-b655-496c-8f4d-ebb509c8faaf" name="Changes" comment="feat: implement splash screen with fade effect">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(app)/(auth)/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(app)/(auth)/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(app)/(public)/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(app)/(public)/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(app)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="464d156c-b655-496c-8f4d-ebb509c8faaf" name="Changes" comment="feat: add environment configuration and implement public layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(app)/(auth)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(app)/(auth)/_layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +97,7 @@
       <updated>1765257776714</updated>
       <workItem from="1765257778105" duration="399000" />
       <workItem from="1765258191512" duration="3547000" />
-      <workItem from="1765823801261" duration="5794000" />
+      <workItem from="1765823801261" duration="5852000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: simplify RootLayout and update package configurations">
       <option name="closed" value="true" />
@@ -156,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765826851176</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: add environment configuration and implement public layout">
+      <option name="closed" value="true" />
+      <created>1765860661039</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765860661039</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +177,8 @@
     <MESSAGE value="refactor: update asset paths in app.json and workspace.xml" />
     <MESSAGE value="feat: add ios and android icons" />
     <MESSAGE value="feat: implement splash screen with fade effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implement splash screen with fade effect" />
+    <MESSAGE value="feat: add environment configuration and implement public layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add environment configuration and implement public layout" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

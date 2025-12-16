@@ -1,11 +1,11 @@
 import React from 'react'
 import {Stack} from "expo-router";
 
-const PublicLayout = () => {
+const AuthLayout = () => {
     return (
         <Stack>
             <Stack.Screen name='index' options={{headerShown: false}} />
         </Stack>
     )
 }
-export default PublicLayout
+export default AuthLayout

@@ -2,7 +2,7 @@ import React from 'react'
 import {Stack} from "expo-router";
 
 const _Layout = () => {
-    const user = false
+    const user = false;
     return (
         <Stack>
             <Stack.Protected guard={user}>
