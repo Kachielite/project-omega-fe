@@ -4,6 +4,8 @@ import { logError, mapAxiosErrorToAppError } from '@/core/common/errors';
 import zustandStorage from '@/core/common/state';
 import { IAuthLoginResponse } from '@/features/authentication/interfaces';
 
+const BASE_URL = process.env.API_BASE_URL || '';
+
 const tokenStore = (() => {
   let tokens: IAuthLoginResponse | null = zustandStorage.getToken();
 
@@ -24,7 +26,7 @@ const tokenStore = (() => {
 })();
 
 // Minimal axios instance — baseURL can be set via environment or elsewhere
-const api = axios.create({ baseURL: process.env.API_BASE_URL ?? '' });
+const api = axios.create({ baseURL: BASE_URL });
 
 let isRefreshing = false;
 let failedQueue: {

@@ -1,11 +1,7 @@
-import {View, Text} from 'react-native'
-import React from 'react'
+import React from 'react';
+import LoginPage from '@/features/authentication/pages';
 
 const Index = () => {
-    return (
-        <View>
-            <Text>This is a public route</Text>
-        </View>
-    )
-}
-export default Index
+  return <LoginPage />;
+};
+export default Index;

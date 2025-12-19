@@ -1,34 +1,38 @@
 export const LightColors = {
   background: '#FFFFFF',
-  surface: '#F9FAFB',
-  border: '#E6E6E6',
+  surface: '#F7F9FC',
+  border: '#E4E7EC',
 
-  textPrimary: '#1C1C1C',
-  textSecondary: '#6B6B6B',
+  textPrimary: '#0F1115',
+  textSecondary: '#5F6472',
   textMuted: '#9CA3AF',
 
-  primary: '#F2C94C',
-  primaryDark: '#E0B843',
-  primarySoft: '#FFF4CC',
+  // Primary accent — matches Lottie green
+  primary: '#6BCF8E',
+  primaryDark: '#57B878',
+  primarySoft: '#EAF7F0',
 
-  taskGreen: '#D7E59B',
-  taskYellow: '#F8D77A',
+  // Task status colors (kept harmonious)
+  taskGreen: '#A6E36E',
+  taskYellow: '#F4D35E',
   taskRed: '#E56A5D',
 };
 
 export const DarkColors = {
-  background: '#1E1E1E',
-  surface: '#262626',
-  border: '#333333',
+  background: '#0F1115', // charcoal, not pure black
+  surface: '#181A20',
+  border: '#2A2E38',
 
-  textPrimary: '#F5F5F5',
-  textSecondary: '#B0B0B0',
-  textMuted: '#8A8A8A',
+  textPrimary: '#FFFFFF',
+  textSecondary: '#B3B8C4',
+  textMuted: '#8A8F9C',
 
-  primary: '#F2C94C',
-  primarySoft: '#3A331A',
+  // Primary accent — same family as Lottie
+  primary: '#A6E36E',
+  primaryDark: '#8FCB5A',
+  primarySoft: '#24301E',
 
-  taskGreen: '#C7D77A',
-  taskYellow: '#F2C14E',
+  taskGreen: '#A6E36E',
+  taskYellow: '#EFC94C',
   taskRed: '#E06B60',
 };
