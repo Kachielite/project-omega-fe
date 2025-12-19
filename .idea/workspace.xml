@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="464d156c-b655-496c-8f4d-ebb509c8faaf" name="Changes" comment="feat: add custom hook for theme color management">
-      <change afterPath="$PROJECT_DIR$/features/authentication/interfaces/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/common/presentation/state/hooks/use-load-fonts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/core/common/presentation/hooks/use-load-fonts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/common/presentation/state/hooks/use-theme-colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/core/common/presentation/hooks/use-theme-colors.ts" afterDir="false" />
+    <list default="true" id="464d156c-b655-496c-8f4d-ebb509c8faaf" name="Changes" comment="feat: refactor font loading hook and add authentication interfaces">
+      <change afterPath="$PROJECT_DIR$/core/common/errors/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +104,7 @@
       <workItem from="1765257778105" duration="399000" />
       <workItem from="1765258191512" duration="3547000" />
       <workItem from="1765823801261" duration="8181000" />
-      <workItem from="1766124759956" duration="393000" />
+      <workItem from="1766124759956" duration="547000" />
     </task>
     <task id="LOCAL-00001" summary="refactor: simplify RootLayout and update package configurations">
       <option name="closed" value="true" />
@@ -198,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765862201032</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: refactor font loading hook and add authentication interfaces">
+      <option name="closed" value="true" />
+      <created>1766125169836</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1766125169836</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +229,8 @@
     <MESSAGE value="feat: implement font loading and update splash screen behavior" />
     <MESSAGE value="feat: add light and dark color themes" />
     <MESSAGE value="feat: add custom hook for theme color management" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add custom hook for theme color management" />
+    <MESSAGE value="feat: refactor font loading hook and add authentication interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: refactor font loading hook and add authentication interfaces" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
