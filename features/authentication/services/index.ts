@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-  IAuthLoginRequest,
-  IAuthLoginResponse,
-  IAuthSignUpRequest,
-} from '@/features/authentication/interfaces';
+import { IAuthLoginRequest, IAuthLoginResponse } from '@/features/authentication/interfaces';
 import { logError, mapAxiosErrorToAppError } from '@/core/common/errors';
 import { customAxios } from '@/core/common/network';
 import * as AppleAuthentication from 'expo-apple-authentication';
@@ -16,7 +12,7 @@ import {
 const PATH = '/auth';
 
 export const AuthenticationService = {
-  loginApple: async (): Promise<IAuthSignUpRequest> => {
+  loginApple: async (): Promise<IAuthLoginRequest> => {
     try {
       const credential = await AppleAuthentication.signInAsync({
         requestedScopes: [
@@ -26,8 +22,8 @@ export const AuthenticationService = {
       });
 
       return {
-        email: credential.email as string,
-        name: `${credential.fullName?.givenName ?? ''} ${credential.fullName?.familyName ?? ''}`.trim(),
+        id_token: credential.identityToken as string,
+        provider: 'apple',
       };
     } catch (error) {
       const appErr = mapAxiosErrorToAppError(error);
@@ -35,14 +31,14 @@ export const AuthenticationService = {
       throw appErr;
     }
   },
-  loginGoogle: async (): Promise<IAuthSignUpRequest> => {
+  loginGoogle: async (): Promise<IAuthLoginRequest> => {
     GoogleSignin.configure();
     try {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
       return {
-        email: response.data?.user?.email as string,
-        name: `${response.data?.user?.givenName as string} ${response.data?.user?.familyName as string}`.trim(),
+        id_token: response?.data?.idToken as string,
+        provider: 'google',
       };
     } catch (error) {
       const createErrorObj = (message: string) => ({

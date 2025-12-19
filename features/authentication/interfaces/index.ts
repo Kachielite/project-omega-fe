@@ -1,12 +1,7 @@
 export interface IAuthLoginRequest {
   id_token: string;
-  nonce: string;
-  provider: string;
-}
-
-export interface IAuthSignUpRequest {
-  email: string;
-  name: string;
+  provider: 'google' | 'apple';
+  nonce?: string;
 }
 
 export interface IAuthRefreshRequest {
