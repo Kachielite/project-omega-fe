@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { IAuthLoginRequest, IAuthLoginResponse } from '@/features/authentication/interfaces';
+import {
+  IAuthCurrentUserResponse,
+  IAuthLoginRequest,
+  IAuthLoginResponse,
+} from '@/features/authentication/interfaces';
 import { logError, mapAxiosErrorToAppError } from '@/core/common/errors';
 import { customAxios } from '@/core/common/network';
 import * as AppleAuthentication from 'expo-apple-authentication';
@@ -101,9 +105,9 @@ export const AuthenticationService = {
       throw appErr;
     }
   },
-  getCurrentUser: async (id: string): Promise<IAuthLoginResponse> => {
+  getCurrentUser: async (): Promise<IAuthCurrentUserResponse> => {
     try {
-      const response = await customAxios.get(`${PATH}/${id}`);
+      const response = await customAxios.get(`${PATH}/me`);
       return response.data;
     } catch (error: unknown) {
       const appErr = mapAxiosErrorToAppError(error);
