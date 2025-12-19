@@ -1,10 +1,8 @@
 import React from 'react';
 import { Stack } from 'expo-router';
 import zustandStorage from '@/core/common/state';
-import useGetCurrentUser from '@/features/authentication/hooks/use-get-current-user';
 
 const Layout = () => {
-  useGetCurrentUser();
   const user = zustandStorage.getUser();
   return (
     <Stack>

@@ -18,6 +18,7 @@ const queryClient = new QueryClient({
 
 export default function RootLayout() {
   useLoadFonts();
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <QueryClientProvider client={queryClient}>

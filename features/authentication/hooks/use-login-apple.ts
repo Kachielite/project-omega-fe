@@ -16,8 +16,9 @@ const useAppleGoogle = () => {
       return AuthenticationService.login(authData);
     },
     {
-      onSuccess: (data) => {
+      onSuccess: async (data) => {
         zustandStorage.setToken(data);
+        await AuthenticationService.getCurrentUser();
         router.replace('/(app)/(auth)');
       },
       onError: (error: AppError) => {

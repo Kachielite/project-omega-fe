@@ -13,11 +13,15 @@ const useLoginGoogle = () => {
       if (!authData) {
         throw new Error('Google login failed');
       }
-      return AuthenticationService.login(authData);
+      const token = AuthenticationService.login(authData);
+      if (!token) {
+        throw new Error('Google login failed');
+      }
+      return await AuthenticationService.getCurrentUser();
     },
     {
-      onSuccess: (data) => {
-        zustandStorage.setToken(data);
+      onSuccess: async (data) => {
+        zustandStorage.setUser(data);
         router.push('/(app)/(auth)');
       },
       onError: (error: AppError) => {
