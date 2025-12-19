@@ -4,6 +4,11 @@ export interface IAuthLoginRequest {
   provider: string;
 }
 
+export interface IAuthSignUpRequest {
+  email: string;
+  name: string;
+}
+
 export interface IAuthRefreshRequest {
   refresh_token: string;
 }

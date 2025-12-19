@@ -8,6 +8,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "usesAppleSignIn": true,
       "icon": {
         "light": "./core/assets/images/ios-light.png",
         "dark": "./core/assets/images/ios-dark.png",
@@ -30,7 +31,16 @@
       "output": "static",
       "favicon": "./core/assets/images/favicon.png"
     },
-    "plugins": ["expo-font"],
+    "plugins": [
+      "expo-font",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.215586258976-ijel2si86v0r1f8l0792o1pg9rjnl39o"
+        }
+      ],
+      "expo-apple-authentication"
+    ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
