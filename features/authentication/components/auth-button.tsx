@@ -9,9 +9,18 @@ type AuthButtonProps = {
   color?: string;
   borderColor?: string;
   labelColor?: string;
+  loading?: boolean;
 };
 
-const AuthButton = ({ logo, label, onPress, color, borderColor, labelColor }: AuthButtonProps) => {
+const AuthButton = ({
+  logo,
+  label,
+  onPress,
+  color,
+  borderColor,
+  labelColor,
+  loading,
+}: AuthButtonProps) => {
   return (
     <TouchableOpacity
       style={[
@@ -19,9 +28,12 @@ const AuthButton = ({ logo, label, onPress, color, borderColor, labelColor }: Au
         { backgroundColor: color, borderColor: borderColor, borderWidth: borderColor ? 1 : 0 },
       ]}
       onPress={onPress}
+      disabled={loading}
     >
-      {logo && <Ionicons name={logo} size={18} color={labelColor} />}
-      <Text style={[styles.buttonLabel, { color: labelColor }]}>{label}</Text>
+      {!loading && logo && <Ionicons name={logo} size={18} color={labelColor} />}
+      <Text style={[styles.buttonLabel, { color: labelColor }]}>
+        {loading ? '...Loading' : label}
+      </Text>
     </TouchableOpacity>
   );
 };

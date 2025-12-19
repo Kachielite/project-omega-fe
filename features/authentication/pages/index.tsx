@@ -5,9 +5,13 @@ import LottieView from 'lottie-react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Fonts } from '@/core/common/constants/fonts';
 import AuthButton from '@/features/authentication/components/auth-button';
+import useLoginApple from '@/features/authentication/hooks/use-login-apple';
+import useLoginGoogle from '@/features/authentication/hooks/use-login-google';
 
 const LoginPage = () => {
   const colors = useThemeColors();
+  const { loginWithAppleHandler, isLoggingWithApple } = useLoginApple();
+  const { loginWithGoogleHandler, isLoggingWithGoogle } = useLoginGoogle();
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.contentContainer}>
@@ -34,20 +38,22 @@ const LoginPage = () => {
         <Animated.View entering={FadeInDown.delay(100)}>
           <AuthButton
             label="Sign in with Apple"
-            onPress={() => console.log('Sign in with Apple')}
+            onPress={loginWithAppleHandler}
             logo="logo-apple"
             color="#000000"
             labelColor="#FFFFFF"
+            loading={isLoggingWithApple}
           />
         </Animated.View>
         <Animated.View entering={FadeInDown.delay(200)}>
           <AuthButton
             label="Sign in with Google"
-            onPress={() => console.log('Sign in with Apple')}
+            onPress={loginWithGoogleHandler}
             logo="logo-google"
             color="#FFFFFF"
             borderColor="#000000"
             labelColor="#0F1115"
+            loading={isLoggingWithGoogle}
           />
         </Animated.View>
       </View>

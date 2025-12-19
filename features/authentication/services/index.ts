@@ -14,6 +14,8 @@ import {
 } from '@react-native-google-signin/google-signin';
 
 const PATH = '/auth';
+const BASE_URL = process.env.EXPO_PUBLIC_BACKEND_URL as string;
+console.log('BASE_URL:', BASE_URL);
 
 export const AuthenticationService = {
   loginApple: async (): Promise<IAuthLoginRequest> => {
@@ -36,7 +38,9 @@ export const AuthenticationService = {
     }
   },
   loginGoogle: async (): Promise<IAuthLoginRequest> => {
-    GoogleSignin.configure();
+    GoogleSignin.configure({
+      iosClientId: process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
+    });
     try {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
@@ -85,7 +89,8 @@ export const AuthenticationService = {
   },
   login: async (payload: IAuthLoginRequest): Promise<IAuthLoginResponse> => {
     try {
-      const response = await axios.post(`${PATH}/login`, payload);
+      console.log('url:', `${BASE_URL}${PATH}/social`);
+      const response = await axios.post(`${BASE_URL}${PATH}/social`, payload);
       return response.data;
     } catch (error: unknown) {
       const appErr = mapAxiosErrorToAppError(error);
@@ -95,7 +100,7 @@ export const AuthenticationService = {
   },
   refreshToken: async (refreshToken: string): Promise<IAuthLoginResponse> => {
     try {
-      const response = await axios.post(`${PATH}/refresh`, {
+      const response = await axios.post(`${BASE_URL}${PATH}/refresh`, {
         refresh_token: refreshToken,
       });
       return response.data;

@@ -18,7 +18,7 @@ const useAppleGoogle = () => {
     {
       onSuccess: (data) => {
         zustandStorage.setToken(data);
-        router.push('/(app)/(auth)');
+        router.replace('/(app)/(auth)');
       },
       onError: (error: AppError) => {
         Toast.error(error.message || 'An error occurred during Apple login');

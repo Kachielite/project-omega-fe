@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { AuthenticationService } from '@/features/authentication/services';
 import { logError, mapAxiosErrorToAppError } from '@/core/common/errors';
 import zustandStorage from '@/core/common/state';
 import { IAuthLoginResponse } from '@/features/authentication/interfaces';
 
-const BASE_URL = process.env.API_BASE_URL || '';
+const BASE_URL = process.env.EXPO_PUBLIC_BACKEND_URL || '';
 
 const tokenStore = (() => {
   let tokens: IAuthLoginResponse | null = zustandStorage.getToken();
@@ -13,20 +12,26 @@ const tokenStore = (() => {
     getAccessToken: () => tokens?.access_token,
     getRefreshToken: () => tokens?.refresh_token,
     setTokens: (t: IAuthLoginResponse) => {
+      // persist and update in-memory tokens
       zustandStorage.setToken(t);
+      tokens = t;
     },
     clearTokens: () => {
       zustandStorage.removeToken();
+      tokens = null;
     },
     emitLogout: () => {
+      // clear tokens and trigger any logout side-effects
       zustandStorage.removeToken();
-      zustandStorage.removeToken();
+      tokens = null;
     },
   };
 })();
 
 // Minimal axios instance — baseURL can be set via environment or elsewhere
 const api = axios.create({ baseURL: BASE_URL });
+// Plain axios instance without interceptors for auth refresh calls (breaks require cycle)
+const plainAxios = axios.create({ baseURL: BASE_URL });
 
 let isRefreshing = false;
 let failedQueue: {
@@ -83,7 +88,10 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        const resp = await AuthenticationService.refreshToken(refreshToken);
+        // Use plain axios (no interceptors) to avoid re-entering the same interceptor
+        const { data: resp } = await plainAxios.post('/auth/refresh', {
+          refresh_token: refreshToken,
+        });
         // Expecting resp to contain access_token and optionally refresh_token
         const newAccess = (resp as any).access_token ?? (resp as any).accessToken;
         const newRefresh = (resp as any).refresh_token ?? (resp as any).refreshToken;
