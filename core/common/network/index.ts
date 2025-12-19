@@ -1,30 +1,24 @@
 import axios from 'axios';
 import { AuthenticationService } from '@/features/authentication/services';
 import { logError, mapAxiosErrorToAppError } from '@/core/common/errors';
-
-type Tokens = {
-  access_token?: string;
-  refresh_token?: string;
-};
+import zustandStorage from '@/core/common/state';
+import { IAuthLoginResponse } from '@/features/authentication/interfaces';
 
 const tokenStore = (() => {
-  let tokens: Tokens = {};
-  let onLogoutCb: (() => void) | null = null;
+  let tokens: IAuthLoginResponse | null = zustandStorage.getToken();
 
   return {
-    getAccessToken: () => tokens.access_token,
-    getRefreshToken: () => tokens.refresh_token,
-    setTokens: (t: Tokens) => {
-      tokens = { ...tokens, ...t };
+    getAccessToken: () => tokens?.access_token,
+    getRefreshToken: () => tokens?.refresh_token,
+    setTokens: (t: IAuthLoginResponse) => {
+      zustandStorage.setToken(t);
     },
     clearTokens: () => {
-      tokens = {};
-    },
-    onLogout: (cb: () => void) => {
-      onLogoutCb = cb;
+      zustandStorage.removeToken();
     },
     emitLogout: () => {
-      onLogoutCb && onLogoutCb();
+      zustandStorage.removeToken();
+      zustandStorage.removeToken();
     },
   };
 })();
