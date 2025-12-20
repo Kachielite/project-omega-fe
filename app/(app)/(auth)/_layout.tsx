@@ -1,11 +1,11 @@
-import React from 'react'
-import {Stack} from "expo-router";
+import React from 'react';
+import { Stack } from 'expo-router';
 
 const AuthLayout = () => {
-    return (
-        <Stack>
-            <Stack.Screen name='index' options={{headerShown: false}} />
-        </Stack>
-    )
-}
-export default AuthLayout
+  return (
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    </Stack>
+  );
+};
+export default AuthLayout;

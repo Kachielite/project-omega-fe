@@ -22,7 +22,7 @@ const useAppleGoogle = () => {
           refresh_token: data.refresh_token,
         });
         zustandStorage.setUser(data.user);
-        router.replace('/(app)/(auth)');
+        router.replace('/(app)/(auth)/(tabs)/home');
       },
       onError: (error: AppError) => {
         Toast.error(error.message || 'An error occurred during Apple login');
