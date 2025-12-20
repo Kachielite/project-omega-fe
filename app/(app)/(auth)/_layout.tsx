@@ -5,6 +5,14 @@ const AuthLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="(menus)/add"
+        options={{
+          presentation: 'formSheet',
+          headerShown: false,
+          title: 'Add',
+        }}
+      />
     </Stack>
   );
 };
