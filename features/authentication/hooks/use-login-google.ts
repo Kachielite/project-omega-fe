@@ -22,7 +22,7 @@ const useLoginGoogle = () => {
           refresh_token: data.refresh_token,
         });
         zustandStorage.setUser(data.user);
-        router.replace('/(app)/(auth)');
+        router.replace('/(app)/(auth)/(tabs)');
       },
       onError: (error: AppError) => {
         Toast.error(error.message || 'An error occurred during Google login');
