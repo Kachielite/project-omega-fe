@@ -42,6 +42,7 @@ const LoginPage = () => {
             logo="logo-apple"
             color="#000000"
             labelColor="#FFFFFF"
+            borderColor="#FFFFFF"
             loading={isLoggingWithApple}
           />
         </Animated.View>

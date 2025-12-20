@@ -25,7 +25,12 @@ const AuthButton = ({
     <TouchableOpacity
       style={[
         styles.buttonContainer,
-        { backgroundColor: color, borderColor: borderColor, borderWidth: borderColor ? 1 : 0 },
+        {
+          backgroundColor: color,
+          borderColor: borderColor,
+          borderWidth: borderColor ? 1 : 0,
+          boxShadow: loading ? '0px 4px 6px rgba(0, 0, 0, 0.4)' : 'none',
+        },
       ]}
       onPress={onPress}
       disabled={loading}

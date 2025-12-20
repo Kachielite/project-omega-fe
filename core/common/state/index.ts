@@ -4,8 +4,8 @@ import { IAuthCurrentUserResponse, IAuthLoginResponse } from '@/features/authent
 const storage = createMMKV();
 
 type TokenStore = {
-  setToken: (value: IAuthLoginResponse) => void;
-  getToken: () => IAuthLoginResponse | null;
+  setToken: (value: Omit<IAuthLoginResponse, 'user'>) => void;
+  getToken: () => Omit<IAuthLoginResponse, 'user'> | null;
   removeToken: () => void;
   setUser: (value: IAuthCurrentUserResponse) => void;
   getUser: () => IAuthCurrentUserResponse | null;
@@ -13,10 +13,10 @@ type TokenStore = {
 };
 
 const zustandStorage: TokenStore = {
-  setToken: (value: IAuthLoginResponse) => {
+  setToken: (value: Omit<IAuthLoginResponse, 'user'>) => {
     storage.set('token', JSON.stringify(value));
   },
-  getToken: (): IAuthLoginResponse | null => {
+  getToken: (): Omit<IAuthLoginResponse, 'user'> | null => {
     const value = storage.getString('token');
     return value ? (JSON.parse(value) as IAuthLoginResponse) : null;
   },

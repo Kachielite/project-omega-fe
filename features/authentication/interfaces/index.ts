@@ -11,6 +11,7 @@ export interface IAuthRefreshRequest {
 export interface IAuthLoginResponse {
   access_token: string;
   refresh_token: string;
+  user: IAuthCurrentUserResponse;
 }
 
 export interface IAuthCurrentUserResponse {

@@ -17,8 +17,11 @@ const useAppleGoogle = () => {
     },
     {
       onSuccess: async (data) => {
-        zustandStorage.setToken(data);
-        await AuthenticationService.getCurrentUser();
+        zustandStorage.setToken({
+          access_token: data.access_token,
+          refresh_token: data.refresh_token,
+        });
+        zustandStorage.setUser(data.user);
         router.replace('/(app)/(auth)');
       },
       onError: (error: AppError) => {

@@ -6,12 +6,12 @@ import { IAuthLoginResponse } from '@/features/authentication/interfaces';
 const BASE_URL = process.env.EXPO_PUBLIC_BACKEND_URL || '';
 
 const tokenStore = (() => {
-  let tokens: IAuthLoginResponse | null = zustandStorage.getToken();
+  let tokens: Omit<IAuthLoginResponse, 'user'> | null = zustandStorage.getToken();
 
   return {
     getAccessToken: () => tokens?.access_token,
     getRefreshToken: () => tokens?.refresh_token,
-    setTokens: (t: IAuthLoginResponse) => {
+    setTokens: (t: Omit<IAuthLoginResponse, 'user'>) => {
       // persist and update in-memory tokens
       zustandStorage.setToken(t);
       tokens = t;

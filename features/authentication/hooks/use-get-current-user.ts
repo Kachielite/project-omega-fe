@@ -3,8 +3,13 @@ import { AuthenticationService } from '@/features/authentication/services';
 import zustandStorage from '@/core/common/state';
 import { AppError } from '@/core/common/errors';
 import { Toast } from 'toastify-react-native';
+import React from 'react';
+import { createMMKV } from 'react-native-mmkv';
+
+const storage = createMMKV();
 
 const useGetCurrentUser = () => {
+  const [user, setUser] = React.useState(() => zustandStorage.getUser());
   const token = zustandStorage.getToken();
   const { isLoading: isFetchingUser } = useQuery(
     'get-current-user',
@@ -22,8 +27,18 @@ const useGetCurrentUser = () => {
     },
   );
 
+  React.useEffect(() => {
+    const listener = storage.addOnValueChangedListener((key) => {
+      if (key === 'user') {
+        setUser(zustandStorage.getUser());
+      }
+    });
+    return () => listener.remove();
+  }, []);
+
   return {
     isFetchingUser,
+    user,
   };
 };
 

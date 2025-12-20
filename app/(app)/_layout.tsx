@@ -1,9 +1,15 @@
 import React from 'react';
 import { Stack } from 'expo-router';
-import zustandStorage from '@/core/common/state';
+import useGetCurrentUser from '@/features/authentication/hooks/use-get-current-user';
+import GeneralLoader from '@/core/components/loaders/general-loader';
 
 const Layout = () => {
-  const user = zustandStorage.getUser();
+  const { user, isFetchingUser } = useGetCurrentUser();
+
+  if (isFetchingUser) {
+    return <GeneralLoader />;
+  }
+
   return (
     <Stack>
       <Stack.Protected guard={!!user}>
