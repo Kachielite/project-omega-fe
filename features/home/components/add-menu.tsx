@@ -18,7 +18,7 @@ function MenuItem({
   const colors = useThemeColors();
   return (
     <Pressable onPress={onPress} style={styles.menuItem}>
-      <Text style={styles.menuText}>{label}</Text>
+      <Text style={[styles.menuText, { color: colors.textPrimary }]}>{label}</Text>
       <Ionicons name={icon} size={24} color={colors.textPrimary} />
     </Pressable>
   );
@@ -31,7 +31,7 @@ export function AddMenu() {
   return (
     <>
       {/* Add Button */}
-      <GlassView isInteractive glassEffectStyle="regular" style={[styles.profile]}>
+      <GlassView tintColor={colors.cardBackground} isInteractive style={[styles.profile]}>
         <Pressable onPress={() => setOpen(!open)}>
           <Ionicons name="add" size={24} color={colors.textPrimary} />
         </Pressable>
@@ -41,7 +41,7 @@ export function AddMenu() {
       {open && (
         <Animated.View entering={FadeInUp.delay(20)} style={styles.overlay}>
           <Pressable style={styles.overlay} onPress={() => setOpen(false)}>
-            <GlassView style={[styles.menu]} isInteractive glassEffectStyle="regular">
+            <GlassView style={[styles.menu]} isInteractive tintColor={colors.background}>
               <MenuItem
                 label="Add Task"
                 onPress={() => {
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
+    zIndex: 40,
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
     paddingTop: 80,
