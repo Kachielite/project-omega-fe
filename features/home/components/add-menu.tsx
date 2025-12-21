@@ -1,10 +1,10 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { Radius, Shadow } from '@/core/common/constants/dimensions';
 import { GlassView } from 'expo-glass-effect';
 import { Ionicons } from '@expo/vector-icons';
 import useThemeColors from '@/core/common/hooks/use-theme-colors';
-import Animated, { FadeInUp } from 'react-native-reanimated';
+import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated';
 
 function MenuItem({
   label,
@@ -13,7 +13,7 @@ function MenuItem({
 }: {
   label: string;
   onPress: () => void;
-  icon: 'checkmark' | 'folder';
+  icon: 'checkmark-circle-sharp' | 'folder-sharp';
 }) {
   const colors = useThemeColors();
   return (
@@ -33,30 +33,30 @@ export function AddMenu() {
       {/* Add Button */}
       <GlassView tintColor={colors.cardBackground} isInteractive style={[styles.profile]}>
         <Pressable onPress={() => setOpen(!open)}>
-          <Ionicons name="add" size={24} color={colors.textPrimary} />
+          <Ionicons name="add-sharp" size={24} color={colors.textPrimary} />
         </Pressable>
       </GlassView>
 
       {/* Overlay */}
       {open && (
-        <Animated.View entering={FadeInUp.delay(20)} style={styles.overlay}>
+        <Animated.View exiting={FadeOutUp} entering={FadeInUp} style={styles.overlay}>
           <Pressable style={styles.overlay} onPress={() => setOpen(false)}>
-            <GlassView style={[styles.menu]} isInteractive tintColor={colors.background}>
+            <View style={[styles.menu, { backgroundColor: colors.cardBackground }]}>
               <MenuItem
                 label="Add Task"
                 onPress={() => {
                   setOpen(false);
                 }}
-                icon="checkmark"
+                icon="checkmark-circle-sharp"
               />
               <MenuItem
                 label="Add Project"
                 onPress={() => {
                   setOpen(false);
                 }}
-                icon="folder"
+                icon="folder-sharp"
               />
-            </GlassView>
+            </View>
           </Pressable>
         </Animated.View>
       )}
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
     paddingTop: 80,
+    ...Shadow.md,
   },
 
   menu: {

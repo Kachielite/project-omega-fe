@@ -1,6 +1,6 @@
 export const LightColors = {
-  background: '#FFFFFF',
-  surface: '#F7F9FC',
+  background: '#F7F9FC',
+  surface: '#FFFFFF',
   border: '#E4E7EC',
 
   textPrimary: '#0F1115',

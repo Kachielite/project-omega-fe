@@ -8,7 +8,7 @@ export default function Header() {
   const colors = useThemeColors();
   return (
     <View style={styles.container}>
-      <Text style={[TextStyles.title, { color: colors.textPrimary }]}>Good morning</Text>
+      <Text style={[styles.greetings, { color: colors.textPrimary }]}>Good morning</Text>
       <AddMenu />
     </View>
   );
@@ -21,5 +21,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     paddingVertical: 20,
+  },
+  greetings: {
+    ...TextStyles.title,
   },
 });

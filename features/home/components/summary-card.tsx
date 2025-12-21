@@ -7,9 +7,27 @@ import { TextStyles } from '@/core/common/constants/fonts';
 import ProgressBar from '@/core/components/progress-bar';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+function DetailsItem({
+  iconName,
+  label,
+  value,
+}: {
+  iconName: 'progress-check' | 'sign-caution';
+  label: string;
+  value: string;
+}) {
+  const colors = useThemeColors();
+  return (
+    <View style={styles.detailsItem}>
+      <MaterialCommunityIcons name={iconName} size={18} color={colors.textPrimary} />
+      <Text style={[styles.detailsItemLabel, { color: colors.textPrimary }]}>{label}</Text>
+      <Text style={[styles.detailsItemValue, { color: colors.textPrimary }]}>{value}</Text>
+    </View>
+  );
+}
+
 export default function SummaryCard() {
   const colors = useThemeColors();
-
   return (
     <GlassView style={[styles.container]} tintColor={colors.cardBackground}>
       <View style={styles.heading}>
@@ -19,17 +37,8 @@ export default function SummaryCard() {
       <ProgressBar progress={30} barColor={colors.textPrimary} containerColor={colors.textMuted} />
       <View style={styles.details}>
         <View style={styles.detailsItemContainer}>
-          <View style={styles.detailsItem}>
-            <MaterialCommunityIcons name="progress-check" size={18} color={colors.textPrimary} />
-            <Text style={[TextStyles.caption, { color: colors.textPrimary }]}>In progress:</Text>
-            <Text style={[TextStyles.bodyMedium, { color: colors.textPrimary }]}>5</Text>
-          </View>
-          <View style={styles.detailsItem}>
-            <MaterialCommunityIcons name="sign-caution" size={18} color={colors.textPrimary} />
-            <Text style={[TextStyles.caption, { color: colors.textPrimary }]}>Overdue:</Text>
-            <Text style={[TextStyles.bodyMedium, { color: colors.textPrimary }]}>5</Text>
-          </View>
-          <View></View>
+          <DetailsItem iconName="progress-check" label="In progress:" value="5" />
+          <DetailsItem iconName="sign-caution" label="Overdue:" value="5" />
         </View>
         <Text style={[styles.progress, { color: colors.textPrimary }]}>30%</Text>
       </View>
@@ -68,6 +77,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     gap: Spacing.sm,
+  },
+  detailsItemLabel: {
+    ...TextStyles.caption,
+  },
+  detailsItemValue: {
+    ...TextStyles.bodyMedium,
   },
   progress: {
     ...TextStyles.hero,
