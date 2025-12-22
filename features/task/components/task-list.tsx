@@ -105,7 +105,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
         <View style={[styles.chipsContainer, { maxWidth: '70%' }]}>
           {visibleTags.map((tag, idx) => (
             <View
-              key={`${tag}-${idx}`}
+              key={tag.id}
               style={[
                 styles.chip,
                 {
@@ -117,7 +117,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
               ]}
             >
               <Text style={[styles.chipText, { color: colors.textPrimary }]} numberOfLines={1}>
-                {tag}
+                {tag.name}
               </Text>
             </View>
           ))}
@@ -176,7 +176,15 @@ const TaskListEmpty = () => {
   );
 };
 
-const TaskItems = ({ items }: { items: ITask[] }) => {
+const TaskItems = ({
+  items,
+  bottomPadding = 20,
+  fullHeight = false,
+}: {
+  items: ITask[];
+  bottomPadding?: number;
+  fullHeight?: boolean;
+}) => {
   const colors = useThemeColors();
   const insets = useSafeAreaInsets?.() ?? { bottom: 0 };
   if (items.length === 0) {
@@ -188,10 +196,13 @@ const TaskItems = ({ items }: { items: ITask[] }) => {
       data={items}
       renderItem={({ item }) => <TaskItem item={item} />}
       contentContainerStyle={{
-        paddingBottom: Math.max(insets.bottom + 20, 80),
+        paddingBottom: Math.max(insets.bottom + bottomPadding, 80),
         backgroundColor: colors.background,
       }}
-      style={styles.itemsContainer}
+      style={[
+        styles.itemsContainer,
+        { height: Dimensions.get('window').height * (fullHeight ? 1 : 0.6) },
+      ]}
       keyExtractor={(item) => item.id.toString()}
     />
   );
@@ -249,7 +260,6 @@ const styles = StyleSheet.create({
   },
   itemsContainer: {
     width: '100%',
-    height: Dimensions.get('window').height * 0.6,
   },
   itemContainer: {
     display: 'flex',

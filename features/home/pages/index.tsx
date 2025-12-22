@@ -14,8 +14,10 @@ import { ScreenContainer } from '@/core/common/constants/dimensions';
 import { TASK_DATA } from '@/core/data/task';
 import ScreenHeader from '@/core/components/screen-header';
 import { AddMenu } from '@/features/home/components/add-menu';
+import { useRouter } from 'expo-router';
 
 export default function HomePage() {
+  const router = useRouter();
   const colors = useThemeColors();
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
@@ -26,7 +28,7 @@ export default function HomePage() {
       <TaskListWrapper>
         <TaskListHeader>
           <TaskListTitle title="Today's Tasks" />
-          <TaskSeeAll onPress={() => {}} />
+          <TaskSeeAll onPress={() => router.push('/(app)/(auth)/(tabs)/tasks')} />
         </TaskListHeader>
         <TaskItems items={TASK_DATA} />
       </TaskListWrapper>
