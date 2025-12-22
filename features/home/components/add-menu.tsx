@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     zIndex: 40,
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
-    paddingTop: 80,
+    paddingTop: 50,
     ...Shadow.md,
   },
 
