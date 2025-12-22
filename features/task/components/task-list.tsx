@@ -76,6 +76,9 @@ const TaskListDatePicker = ({
 
 const TaskItem = ({ item }: { item: ITask }) => {
   const colors = useThemeColors();
+  const visibleCount = 3;
+  const visibleTags = item.tags ? item.tags.slice(0, visibleCount) : [];
+  const remaining = item.tags ? Math.max(0, item.tags.length - visibleTags.length) : 0;
   return (
     <GlassView style={styles.itemContainer} tintColor={colors.cardBackground}>
       <Text style={[styles.itemTitle, { color: colors.textPrimary }]}>{item.title}</Text>
@@ -98,18 +101,53 @@ const TaskItem = ({ item }: { item: ITask }) => {
         </View>
       </View>
       <View style={[styles.itemMeta, { backgroundColor: colors.cardBorder }]}>
+        {/* Tags: show up to 3, overlapping chips, then a +N chip if more */}
+        <View style={[styles.chipsContainer, { maxWidth: '70%' }]}>
+          {visibleTags.map((tag, idx) => (
+            <View
+              key={`${tag}-${idx}`}
+              style={[
+                styles.chip,
+                {
+                  backgroundColor: colors.cardBackground,
+                  borderColor: colors.cardBorder,
+                  marginLeft: idx === 0 ? 0 : -12,
+                  zIndex: idx + 1,
+                },
+              ]}
+            >
+              <Text style={[styles.chipText, { color: colors.textPrimary }]} numberOfLines={1}>
+                {tag}
+              </Text>
+            </View>
+          ))}
+          {remaining > 0 && (
+            <View
+              style={[
+                styles.chip,
+                {
+                  backgroundColor: colors.primarySoft,
+                  borderColor: colors.primary,
+                  marginLeft: visibleTags.length === 0 ? 0 : -12,
+                  zIndex: visibleTags.length + 1,
+                },
+              ]}
+            >
+              <Text style={[styles.chipText, { color: colors.primaryDark }]} numberOfLines={1}>
+                {`+${remaining}`}
+              </Text>
+            </View>
+          )}
+        </View>
         <Text
           style={[
-            styles.itemMetaTag,
-            { backgroundColor: colors.cardBackground, color: colors.textPrimary },
-          ]}
-        >
-          {item.priority}
-        </Text>
-        <Text
-          style={[
-            styles.itemMetaTag,
-            { backgroundColor: colors.cardBackground, color: colors.textPrimary },
+            styles.statusPill,
+            {
+              backgroundColor: 'transparent',
+              borderWidth: Border.thin,
+              borderColor: colors.textPrimary,
+              color: colors.textPrimary,
+            },
           ]}
         >
           {item.status}
@@ -252,10 +290,37 @@ const styles = StyleSheet.create({
     padding: Spacing.sm,
     borderRadius: Radius.xl,
   },
+  chipsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    overflow: 'visible',
+    flexShrink: 1,
+  },
+  chip: {
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: 4,
+    borderRadius: Radius.xl,
+    borderWidth: Border.thin,
+    marginRight: 8,
+  },
+  chipText: {
+    ...TextStyles.bodyExtraSmall,
+    fontSize: 12,
+  },
   itemMetaTag: {
     ...TextStyles.bodyExtraSmall,
     padding: Spacing.sm,
     borderRadius: Radius.xl,
+  },
+  statusPill: {
+    ...TextStyles.bodyExtraSmall,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: 4,
+    borderRadius: Radius.xl,
+    minWidth: 72,
+    textAlign: 'center',
+    fontWeight: '600',
+    flexShrink: 0,
   },
 });
 
