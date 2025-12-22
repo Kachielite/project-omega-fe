@@ -10,7 +10,7 @@ import {
   TaskListWrapper,
   TaskSeeAll,
 } from '@/features/task/components/task-list';
-import { Spacing } from '@/core/common/constants/dimensions';
+import { ScreenContainer } from '@/core/common/constants/dimensions';
 import { TASK_DATA } from '@/core/data/task';
 import ScreenHeader from '@/core/components/screen-header';
 import { AddMenu } from '@/features/home/components/add-menu';
@@ -36,8 +36,6 @@ export default function HomePage() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingHorizontal: 12,
-    gap: Spacing.lg,
+    ...ScreenContainer,
   },
 });

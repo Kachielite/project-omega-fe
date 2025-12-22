@@ -86,3 +86,9 @@ export const Shadow = {
     elevation: 4,
   },
 };
+
+export const ScreenContainer = {
+  flex: 1,
+  paddingHorizontal: 12,
+  gap: Spacing.lg,
+};
