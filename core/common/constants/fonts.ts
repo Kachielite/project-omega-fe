@@ -42,9 +42,30 @@ export const TextStyles = {
     lineHeight: LineHeight.xxl,
   },
 
+  title2: {
+    fontFamily: Fonts.bold,
+    fontSize: FontSize.xl,
+    lineHeight: LineHeight.xl,
+  },
+  title3: {
+    fontFamily: Fonts.bold,
+    fontSize: FontSize.lg,
+    lineHeight: LineHeight.lg,
+  },
+  tile4: {
+    fontFamily: Fonts.bold,
+    fontSize: FontSize.md,
+    lineHeight: LineHeight.md,
+  },
+  title5: {
+    fontFamily: Fonts.bold,
+    fontSize: FontSize.sm,
+    lineHeight: LineHeight.sm,
+  },
+
   subtitle: {
     fontFamily: Fonts.semiBold,
-    fontSize: FontSize.xl,
+    fontSize: FontSize.lg,
     lineHeight: LineHeight.xl,
   },
 

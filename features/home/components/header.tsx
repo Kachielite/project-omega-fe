@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    paddingVertical: 20,
   },
   greetings: {
     ...TextStyles.title,

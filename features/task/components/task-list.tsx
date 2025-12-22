@@ -1,5 +1,5 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { Radius, Spacing } from '@/core/common/constants/dimensions';
+import { Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Border, Card, Radius, Spacing } from '@/core/common/constants/dimensions';
 import { TextStyles } from '@/core/common/constants/fonts';
 import useThemeColors from '@/core/common/hooks/use-theme-colors';
 import RNDateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
@@ -7,7 +7,7 @@ import moment from 'moment';
 import React from 'react';
 import { ITask } from '@/features/task/interfaces';
 import { GlassView } from 'expo-glass-effect';
-import { FontAwesome6, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const TaskListWrapper = ({ children }: { children: React.ReactNode }) => {
   return <View style={styles.wrapper}>{children}</View>;
@@ -91,13 +91,19 @@ const TaskItem = ({ item }: { item: ITask }) => {
 const TaskListEmpty = () => {
   const colors = useThemeColors();
   return (
-    <View>
-      <FontAwesome6 name="list-alt" size={24} color="black" />
-      <Text style={{ color: colors.textSecondary }}>No tasks available.</Text>
-      <TouchableOpacity onPress={() => console.log('clicked')}>
-        <Text style={{ color: colors.textPrimary }}>Add New Task</Text>
+    <GlassView style={styles.emptyStateContainer} tintColor={colors.cardBackground}>
+      <Ionicons name="folder-open-outline" size={90} color="black" />
+      <Text style={[styles.emptyStateTitle, { color: colors.textPrimary }]}>
+        No tasks available.
+      </Text>
+      <TouchableOpacity
+        style={[styles.emptyStateBtn, { backgroundColor: colors.textPrimary }]}
+        onPress={() => console.log('clicked')}
+      >
+        <Ionicons name="add-outline" size={24} color={colors.background} />
+        <Text style={[{ color: colors.background }]}>Add New Task</Text>
       </TouchableOpacity>
-    </View>
+    </GlassView>
   );
 };
 
@@ -128,10 +134,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    ...TextStyles.title,
+    ...TextStyles.title3,
   },
   seeAll: {
-    ...TextStyles.body,
+    ...TextStyles.title5,
   },
   datePicker: {
     borderWidth: 1,
@@ -140,6 +146,29 @@ const styles = StyleSheet.create({
   },
   date: {
     ...TextStyles.body,
+  },
+  emptyStateContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: Card.paddingSm,
+    borderRadius: Radius.md,
+    height: Dimensions.get('window').height * 0.5,
+    gap: Spacing.lg,
+  },
+  emptyStateTitle: {
+    ...TextStyles.body,
+  },
+  emptyStateBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: Spacing.sm,
+    borderRadius: Radius.md,
+    gap: Spacing.md,
+    borderWidth: Border.thin,
+    ...TextStyles.button,
   },
 });
 
