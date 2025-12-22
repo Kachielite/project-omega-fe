@@ -1,6 +1,6 @@
 export const LightColors = {
-  background: '#FFFFFF',
-  surface: '#F7F9FC',
+  background: '#F7F9FC',
+  surface: '#FFFFFF',
   border: '#E4E7EC',
 
   textPrimary: '#0F1115',
@@ -16,6 +16,10 @@ export const LightColors = {
   taskGreen: '#A6E36E',
   taskYellow: '#F4D35E',
   taskRed: '#E56A5D',
+
+  // Card colors
+  cardBackground: '#FFFFFF',
+  cardBorder: '#E4E7EC',
 };
 
 export const DarkColors = {
@@ -35,4 +39,8 @@ export const DarkColors = {
   taskGreen: '#A6E36E',
   taskYellow: '#EFC94C',
   taskRed: '#E06B60',
+
+  // Card colors
+  cardBackground: '#151A21',
+  cardBorder: '#2A2E38',
 };

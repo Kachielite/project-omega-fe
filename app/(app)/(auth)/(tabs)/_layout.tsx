@@ -9,6 +9,15 @@ export default function Layout() {
         <Label hidden>Home</Label>
         <Icon
           sf={{ default: 'house', selected: 'house.fill' }}
+          drawable="home"
+          selectedColor={colors.textPrimary}
+        />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="tasks">
+        <Label hidden>Task</Label>
+        <Icon
+          sf={{ default: 'checkmark.circle', selected: 'checkmark.circle.fill' }}
+          drawable="check_circle"
           selectedColor={colors.textPrimary}
         />
       </NativeTabs.Trigger>
@@ -16,6 +25,7 @@ export default function Layout() {
         <Label hidden>Projects</Label>
         <Icon
           sf={{ default: 'folder', selected: 'folder.fill' }}
+          drawable="folder"
           selectedColor={colors.textPrimary}
         />
       </NativeTabs.Trigger>
@@ -23,6 +33,7 @@ export default function Layout() {
         <Label hidden>Settings</Label>
         <Icon
           sf={{ default: 'gearshape', selected: 'gearshape.fill' }}
+          drawable="settings"
           selectedColor={colors.textPrimary}
         />
       </NativeTabs.Trigger>
