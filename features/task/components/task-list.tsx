@@ -85,7 +85,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
       <View style={styles.dueDateContainer}>
         <View style={styles.dueDateItem}>
           <View style={[styles.dueDateItemIcon, { backgroundColor: colors.cardBorder }]}>
-            <Ionicons name="calendar-sharp" size={8} color={colors.textPrimary} />
+            <Ionicons name="calendar-sharp" size={10} color={colors.textPrimary} />
           </View>
           <Text style={[styles.dueDateText, { color: colors.textPrimary }]}>
             {moment(item.due_date).format('DD-MMM')}
@@ -274,8 +274,8 @@ const styles = StyleSheet.create({
     gap: Spacing.xs,
   },
   dueDateItemIcon: {
-    width: 15,
-    height: 15,
+    width: 18,
+    height: 18,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: Radius.round,
