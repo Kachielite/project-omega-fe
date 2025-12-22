@@ -1,3 +1,5 @@
+import { ITags } from '@/features/tag/interfaces';
+
 export interface ITask {
   id: number;
   user_id: number;
@@ -9,11 +11,6 @@ export interface ITask {
   tags: ITags[];
   created_at: string;
   updated_at: string;
-}
-
-export interface ITags {
-  id: number;
-  name: string;
 }
 
 export enum ITaskStatus {
