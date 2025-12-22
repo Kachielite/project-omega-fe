@@ -2,7 +2,7 @@ import { Slot } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
 import useLoadFonts from '@/core/common/hooks/use-load-fonts';
-import ToastManager from 'toastify-react-native/components/ToastManager';
+import ToastProvider from 'toastify-react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 SplashScreen.preventAutoHideAsync();
@@ -23,8 +23,8 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <QueryClientProvider client={queryClient}>
         <Slot />
-        <ToastManager />
       </QueryClientProvider>
+      <ToastProvider />
     </GestureHandlerRootView>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import React from 'react';
 import useThemeColors from '@/core/common/hooks/use-theme-colors';
 import LottieView from 'lottie-react-native';
@@ -12,6 +12,8 @@ const LoginPage = () => {
   const colors = useThemeColors();
   const { loginWithAppleHandler, isLoggingWithApple } = useLoginApple();
   const { loginWithGoogleHandler, isLoggingWithGoogle } = useLoginGoogle();
+
+  const isAndroid = Platform.OS === 'android';
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.contentContainer}>
@@ -35,7 +37,10 @@ const LoginPage = () => {
         </Animated.Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Animated.View entering={FadeInDown.delay(100)}>
+        <Animated.View
+          entering={FadeInDown.delay(100)}
+          style={{ display: isAndroid ? 'none' : 'flex' }}
+        >
           <AuthButton
             label="Sign in with Apple"
             onPress={loginWithAppleHandler}
