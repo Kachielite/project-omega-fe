@@ -12,10 +12,10 @@ import {
   isErrorWithCode,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import ENV from '@/core/common/constants/env';
 
 const PATH = '/auth';
-const BASE_URL = process.env.EXPO_PUBLIC_BACKEND_URL as string;
-console.log('BASE_URL:', BASE_URL);
+const BASE_URL = ENV.BASE_URL;
 
 export const AuthenticationService = {
   loginApple: async (): Promise<IAuthLoginRequest> => {

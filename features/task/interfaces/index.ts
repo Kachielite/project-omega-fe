@@ -26,7 +26,7 @@ export enum ITaskPriority {
   HIGH = 'High',
 }
 
-export interface IQueryParams {
+export interface ITaskQueryParams {
   status?: ITaskStatus;
   priority?: ITaskPriority;
   due_date?: string;
