@@ -9,7 +9,7 @@ interface TagsStore {
   selectedTag: ITags | null;
   setTags: (value: ITags[]) => void;
   getTags: () => ITags[] | null;
-  setSelectedTag: (value: ITags) => void;
+  setSelectedTag: (value: ITags | null) => void;
   getSelectedTag: () => ITags | null;
 }
 
@@ -21,7 +21,7 @@ const useTagsStore = create<TagsStore>()(
 
       setTags: (value: ITags[]) => set({ tags: value }),
       getTags: (): ITags[] | null => get().tags,
-      setSelectedTag: (value: ITags) => set({ selectedTag: value }),
+      setSelectedTag: (value: ITags | null) => set({ selectedTag: value }),
       getSelectedTag: (): ITags | null => get().selectedTag,
     }),
     {
