@@ -34,7 +34,7 @@ export default function TasksPage() {
       </ScreenHeader>
       <TaskListWrapper>
         <TaskListHeader>
-          <TaskListTitle title="" />
+          <TaskListTitle title="Manage your task" />
           <TaskListDatePicker
             date={new Date(query.due_date as string)}
             onDateChange={onDateChange}

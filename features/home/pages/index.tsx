@@ -27,7 +27,7 @@ export default function HomePage() {
       <SummaryCard />
       <TaskListWrapper>
         <TaskListHeader>
-          <TaskListTitle title="Today's Tasks" />
+          <TaskListTitle title="Upcoming Tasks" />
           <TaskSeeAll onPress={() => router.push('/(app)/(auth)/(tabs)/tasks')} />
         </TaskListHeader>
         <TaskItems items={TASK_DATA} />
