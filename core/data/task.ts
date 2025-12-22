@@ -1,0 +1,81 @@
+import { ITask, ITaskPriority, ITaskStatus } from '@/features/task/interfaces';
+
+const TASK_DATA: ITask[] = [
+  {
+    id: 1,
+    user_id: 101,
+    title: 'Complete Project Report',
+    description: 'Finalize and submit the project report by the end of the week.',
+    status: ITaskStatus.IN_PROGRESS,
+    due_date: '2024-07-05T17:00:00Z',
+    priority: ITaskPriority.MEDIUM,
+    tags: ['work', 'urgent'],
+    created_at: '2024-06-20T10:00:00Z',
+    updated_at: '2024-06-25T15:30:00Z',
+  },
+  {
+    id: 2,
+    user_id: 102,
+    title: 'Design Landing Page',
+    description:
+      'Create wireframes and high-fidelity designs for the new marketing landing page, including responsive layouts and assets handoff.',
+    status: ITaskStatus.PENDING,
+    due_date: '2026-01-10T12:00:00Z',
+    priority: ITaskPriority.HIGH,
+    tags: ['design', 'frontend', 'marketing'],
+    created_at: '2025-12-01T09:00:00Z',
+    updated_at: '2025-12-15T10:00:00Z',
+  },
+  {
+    id: 3,
+    user_id: 103,
+    title: 'Setup CI/CD Pipeline',
+    description:
+      'Implement CI/CD for the repository: automated tests, linting, builds, and deployment to staging on merge to main.',
+    status: ITaskStatus.IN_PROGRESS,
+    due_date: '2026-01-05T18:00:00Z',
+    priority: ITaskPriority.HIGH,
+    tags: ['devops', 'ci', 'automation'],
+    created_at: '2025-11-20T08:30:00Z',
+    updated_at: '2025-12-20T14:45:00Z',
+  },
+  {
+    id: 4,
+    user_id: 101,
+    title: 'User Feedback Review',
+    description:
+      'Consolidate user feedback from the last release, prioritize issues and feature requests, and prepare a summary for the product meeting.',
+    status: ITaskStatus.COMPLETED,
+    due_date: '2025-12-15T17:00:00Z',
+    priority: ITaskPriority.LOW,
+    tags: ['research', 'ux', 'feedback'],
+    created_at: '2025-11-15T11:00:00Z',
+    updated_at: '2025-12-16T09:20:00Z',
+  },
+  {
+    id: 5,
+    user_id: 104,
+    title: 'Prepare Invoice Q4',
+    description:
+      'Generate and send Q4 invoices to clients, reconcile payments and update the finance tracker.',
+    status: ITaskStatus.PENDING,
+    due_date: '2025-12-31T23:59:59Z',
+    priority: ITaskPriority.MEDIUM,
+    tags: ['finance', 'admin'],
+    created_at: '2025-12-10T10:15:00Z',
+    updated_at: '2025-12-18T16:00:00Z',
+  },
+  {
+    id: 6,
+    user_id: 105,
+    title: 'Security Audit',
+    description:
+      'Run a security audit of the main services, review dependency vulnerabilities, and produce remediation tickets for high-risk findings.',
+    status: ITaskStatus.IN_PROGRESS,
+    due_date: '2026-02-01T12:00:00Z',
+    priority: ITaskPriority.HIGH,
+    tags: ['security', 'audit', 'dependencies'],
+    created_at: '2025-12-05T13:30:00Z',
+    updated_at: '2025-12-21T18:10:00Z',
+  },
+];
