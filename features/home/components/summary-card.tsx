@@ -34,13 +34,13 @@ export default function SummaryCard() {
         <Text style={[TextStyles.bodyMedium, { color: colors.textPrimary }]}>Summary</Text>
         <Text style={[TextStyles.caption, { color: colors.textPrimary }]}>Attention required</Text>
       </View>
-      <ProgressBar progress={30} barColor={colors.textPrimary} containerColor={colors.cardBorder} />
+      <ProgressBar progress={38} barColor={colors.textPrimary} containerColor={colors.cardBorder} />
       <View style={styles.details}>
         <View style={styles.detailsItemContainer}>
           <DetailsItem iconName="progress-check" label="In progress:" value="5" />
           <DetailsItem iconName="sign-caution" label="Overdue:" value="5" />
         </View>
-        <Text style={[styles.progress, { color: colors.textPrimary }]}>30%</Text>
+        <Text style={[styles.progress, { color: colors.textPrimary }]}>38%</Text>
       </View>
     </GlassView>
   );

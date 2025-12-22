@@ -14,6 +14,7 @@ import { ScreenContainer } from '@/core/common/constants/dimensions';
 import ScreenHeader from '@/core/components/screen-header';
 import { AddMenu } from '@/features/home/components/add-menu';
 import { useRouter } from 'expo-router';
+import { TASK_DATA } from '@/core/data/task';
 
 export default function HomePage() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function HomePage() {
           <TaskListTitle title="Upcoming Tasks" />
           <TaskSeeAll onPress={() => router.push('/(app)/(auth)/(tabs)/tasks')} />
         </TaskListHeader>
-        <TaskItems items={[]} />
+        <TaskItems items={TASK_DATA} />
       </TaskListWrapper>
     </SafeAreaView>
   );

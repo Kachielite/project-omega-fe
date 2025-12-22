@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { Border, Card, Radius, Shadow, Spacing } from '@/core/common/constants/dimensions';
+import { Border, Card, Radius, Spacing } from '@/core/common/constants/dimensions';
 import { TextStyles } from '@/core/common/constants/fonts';
 import useThemeColors from '@/core/common/hooks/use-theme-colors';
 import RNDateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
@@ -22,7 +22,8 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const TaskListWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <View style={[styles.wrapper]}>{children}</View>;
+  const colors = useThemeColors();
+  return <View style={[styles.wrapper, { backgroundColor: colors.background }]}>{children}</View>;
 };
 
 const TaskListHeader = ({ children }: { children: React.ReactNode }) => {
@@ -102,10 +103,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
   const visibleTags = item.tags ? item.tags.slice(0, visibleCount) : [];
   const remaining = item.tags ? Math.max(0, item.tags.length - visibleTags.length) : 0;
   return (
-    <GlassView
-      style={[styles.itemContainer, { backgroundColor: colors.cardBackground }]}
-      tintColor={colors.cardBackground}
-    >
+    <View style={[styles.itemContainer, { backgroundColor: colors.cardBackground }]}>
       <Text style={[styles.itemTitle, { color: colors.textPrimary }]}>{item.title}</Text>
       <View style={styles.dueDateContainer}>
         <View style={styles.dueDateItem}>
@@ -178,7 +176,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
           {item.status}
         </Text>
       </View>
-    </GlassView>
+    </View>
   );
 };
 
@@ -215,7 +213,6 @@ const TaskItems = ({
   bottomPadding?: number;
   fullHeight?: boolean;
 }) => {
-  const colors = useThemeColors();
   const insets = useSafeAreaInsets?.() ?? { bottom: 0 };
 
   return (
@@ -225,15 +222,14 @@ const TaskItems = ({
       renderItem={({ item }) => <TaskItem item={item} />}
       contentContainerStyle={{
         paddingBottom: Math.max(insets.bottom + bottomPadding, 80),
-        backgroundColor: colors.background,
       }}
       style={[
         styles.itemsContainer,
         {
           height: Dimensions.get('window').height * (fullHeight ? 1 : 0.6),
-          backgroundColor: colors.background,
         },
       ]}
+      ItemSeparatorComponent={() => <View style={{ height: Spacing.md }} />}
       ListEmptyComponent={<TaskListEmpty fullHeight={fullHeight} />}
       keyExtractor={(item) => item.id.toString()}
     />
@@ -313,9 +309,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: Card.paddingSm,
     borderRadius: Radius.lg,
-    marginBottom: Spacing.md,
     gap: Spacing.lg,
-    ...Shadow.md,
   },
   itemTitle: {
     ...TextStyles.title3,

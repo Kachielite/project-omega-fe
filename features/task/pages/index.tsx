@@ -14,6 +14,7 @@ import {
   TaskListWrapper,
 } from '@/features/task/components/task-list';
 import useTaskStore from '@/features/task/state';
+import { TASK_DATA } from '@/core/data/task';
 
 export default function TasksPage() {
   const colors = useThemeColors();
@@ -39,7 +40,7 @@ export default function TasksPage() {
             onDateChange={onDateChange}
           />
         </TaskListHeader>
-        <TaskItems items={[]} fullHeight bottomPadding={250} />
+        <TaskItems items={TASK_DATA} fullHeight bottomPadding={250} />
       </TaskListWrapper>
     </SafeAreaView>
   );
