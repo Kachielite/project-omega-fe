@@ -31,7 +31,7 @@ export interface ITaskQueryParams {
   priority?: ITaskPriority;
   due_date?: string;
   tags?: string[];
-  search?: string;
+  title?: string;
   sort_by?: 'due_date' | 'priority' | 'created_at' | 'title';
   sort_order?: 'asc' | 'desc';
   page: number;
@@ -44,6 +44,7 @@ export interface ICreateTaskDTO {
   description: string;
   due_date: string;
   priority: ITaskPriority;
+  status: ITaskStatus;
   tags?: number[];
   project_id?: number;
 }

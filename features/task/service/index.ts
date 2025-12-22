@@ -33,7 +33,7 @@ export const TaskService = {
       throw appErr;
     }
   },
-  createTask: async (task: ITask): Promise<ICreateTaskDTO> => {
+  createTask: async (task: ICreateTaskDTO): Promise<IPaginationMeta<ITask>> => {
     try {
       const response = await customAxios.post(`${PATH}`, task);
       return response.data;
