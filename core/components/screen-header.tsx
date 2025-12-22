@@ -1,15 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
 import useThemeColors from '@/core/common/hooks/use-theme-colors';
+import { StyleSheet, Text, View } from 'react-native';
 import { TextStyles } from '@/core/common/constants/fonts';
-import { AddMenu } from '@/features/home/components/add-menu';
+import React from 'react';
 
-export default function Header() {
+interface Props {
+  title?: string;
+  children?: React.ReactNode;
+}
+
+export default function ScreenHeader({ title = 'Good morning', children }: Props) {
   const colors = useThemeColors();
   return (
     <View style={styles.container}>
-      <Text style={[styles.greetings, { color: colors.textPrimary }]}>Good morning</Text>
-      <AddMenu />
+      <Text style={[styles.greetings, { color: colors.textPrimary }]}>{title}</Text>
+      {children}
     </View>
   );
 }
