@@ -188,18 +188,18 @@ const TaskListEmpty = ({ fullHeight = false }: { fullHeight?: boolean }) => {
     <GlassView
       style={[
         styles.emptyStateContainer,
-        { height: Dimensions.get('window').height * (fullHeight ? 0.75 : 0.5) },
+        { height: Dimensions.get('window').height * (fullHeight ? 0.7 : 0.5) },
       ]}
+      tintColor={colors.cardBackground}
     >
-      <Ionicons name="folder-open-outline" size={90} color="black" />
       <Text style={[styles.emptyStateTitle, { color: colors.textPrimary }]}>
         No tasks available.
       </Text>
+      <Ionicons name="folder-open-outline" size={90} color={colors.textPrimary} />
       <TouchableOpacity
         style={[styles.emptyStateBtn, { backgroundColor: colors.textPrimary }]}
         onPress={() => console.log('clicked')}
       >
-        <Ionicons name="add-outline" size={24} color={colors.background} />
         <Text style={[{ color: colors.background }]}>Add New Task</Text>
       </TouchableOpacity>
     </GlassView>
@@ -293,17 +293,17 @@ const styles = StyleSheet.create({
     gap: Spacing.lg,
   },
   emptyStateTitle: {
-    ...TextStyles.body,
+    ...TextStyles.title2,
   },
   emptyStateBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: Spacing.sm,
+    padding: Spacing.md,
     borderRadius: Radius.md,
     gap: Spacing.md,
     borderWidth: Border.thin,
-    ...TextStyles.button,
+    ...TextStyles.title,
   },
   itemsContainer: {
     width: '100%',
