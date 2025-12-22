@@ -2,6 +2,7 @@ import { ITags } from '@/features/tag/interfaces';
 import { create } from 'zustand/react';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import zustandStorage from '@/core/common/utils/zustandStorage';
+import ENV from '@/core/common/constants/env';
 
 interface TagsStore {
   tags: ITags[] | null;
@@ -24,7 +25,7 @@ const useTagsStore = create<TagsStore>()(
       getSelectedTag: (): ITags | null => get().selectedTag,
     }),
     {
-      name: 'tags-storage-v1',
+      name: ENV.STORAGE_KEY,
       storage: createJSONStorage(() => zustandStorage),
     },
   ),
