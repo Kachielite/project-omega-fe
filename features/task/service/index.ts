@@ -33,7 +33,7 @@ export const TaskService = {
       throw appErr;
     }
   },
-  createTask: async (task: ICreateTaskDTO): Promise<IPaginationMeta<ITask>> => {
+  createTask: async (task: ICreateTaskDTO): Promise<ITask> => {
     try {
       const response = await customAxios.post(`${PATH}`, task);
       return response.data;
@@ -43,9 +43,9 @@ export const TaskService = {
       throw appErr;
     }
   },
-  updateTask: async (task: ITask): Promise<IUpdateTaskDTO> => {
+  updateTask: async (task: IUpdateTaskDTO, tag_id: number): Promise<ITask> => {
     try {
-      const response = await customAxios.put(`${PATH}/${task.id}`, task);
+      const response = await customAxios.put(`${PATH}/${tag_id}`, task);
       return response.data;
     } catch (error) {
       const appErr = mapAxiosErrorToAppError(error);

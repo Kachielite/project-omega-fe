@@ -1,6 +1,11 @@
 import { z } from 'zod';
 import { ITaskPriority, ITaskStatus } from '@/features/task/interfaces';
 
+const tagSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+});
+
 export const taskCreationSchema = z.object({
   title: z
     .string()
@@ -12,12 +17,13 @@ export const taskCreationSchema = z.object({
     .refine((date) => !isNaN(Date.parse(date)), { message: 'Invalid date format' }),
   priority: z.enum(ITaskPriority),
   status: z.enum(ITaskStatus).optional(),
-  tags: z.array(z.number()).optional(),
+  tags: z.array(tagSchema).optional(),
   project_id: z.number().optional(),
 });
 
 export type TaskCreationSchemaType = z.infer<typeof taskCreationSchema>;
 
+// TODO: Add project once project feature is implemented
 export const taskUpdateSchema = z.object({
   title: z
     .string()
@@ -31,7 +37,7 @@ export const taskUpdateSchema = z.object({
     .optional(),
   priority: z.enum(ITaskPriority).optional(),
   status: z.enum(ITaskStatus).optional(),
-  tags: z.array(z.number()).optional(),
+  tags: z.array(tagSchema).optional(),
 });
 
 export type TaskUpdateSchemaType = z.infer<typeof taskUpdateSchema>;

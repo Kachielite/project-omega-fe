@@ -41,10 +41,10 @@ export interface ITaskQueryParams {
 
 export interface ICreateTaskDTO {
   title: string;
-  description: string;
-  due_date: string;
+  description?: string;
+  due_date?: string;
   priority: ITaskPriority;
-  status: ITaskStatus;
+  status?: ITaskStatus;
   tags?: number[];
   project_id?: number;
 }
