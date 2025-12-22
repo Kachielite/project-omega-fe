@@ -1,10 +1,13 @@
 import {
   Dimensions,
   FlatList,
+  Modal,
+  Platform,
+  Pressable,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import { Border, Card, Radius, Shadow, Spacing } from '@/core/common/constants/dimensions';
@@ -45,7 +48,7 @@ const TaskListDatePicker = ({
   onDateChange,
 }: {
   date: Date;
-  onDateChange: (text: Date) => void;
+  onDateChange: (date: string) => void;
 }) => {
   const colors = useThemeColors();
   const [show, setShow] = React.useState(false);
@@ -56,20 +59,39 @@ const TaskListDatePicker = ({
     if (type === 'set') {
       const newDate = date ?? (timestamp ? new Date(timestamp) : undefined);
       if (newDate) {
-        onDateChange(newDate);
+        onDateChange(newDate.toISOString());
       }
     }
     setShow(false);
   };
   return (
-    <View style={[styles.datePicker, { borderColor: colors.border }]}>
-      {/* TextInput doesn't have onPress; use onFocus to open the picker */}
-      <TextInput
-        style={styles.date}
-        value={moment(date).format('DD-MMM-YYYY')}
-        onFocus={() => setShow(true)}
-      />
-      {show && <RNDateTimePicker value={date} onChange={setDate} mode="datetime" />}
+    <View
+      style={[
+        styles.datePicker,
+        { borderColor: colors.textPrimary, backgroundColor: colors.cardBackground },
+      ]}
+    >
+      <Pressable onPress={() => setShow(true)}>
+        <Text style={[styles.date, { color: colors.textPrimary }]}>
+          {moment(date).format('DD/MM/YYYY')}
+        </Text>
+      </Pressable>
+      {show && (
+        <Modal transparent animationType="fade" onRequestClose={() => setShow(false)}>
+          <Pressable style={styles.modalOverlay} onPress={() => setShow(false)}>
+            <TouchableWithoutFeedback>
+              <View style={[styles.pickerContainer, { backgroundColor: colors.cardBackground }]}>
+                <RNDateTimePicker
+                  value={date}
+                  onChange={setDate}
+                  mode="datetime"
+                  display={Platform.OS === 'ios' ? 'inline' : 'default'}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+          </Pressable>
+        </Modal>
+      )}
     </View>
   );
 };
@@ -80,7 +102,10 @@ const TaskItem = ({ item }: { item: ITask }) => {
   const visibleTags = item.tags ? item.tags.slice(0, visibleCount) : [];
   const remaining = item.tags ? Math.max(0, item.tags.length - visibleTags.length) : 0;
   return (
-    <GlassView style={styles.itemContainer} tintColor={colors.cardBackground}>
+    <GlassView
+      style={[styles.itemContainer, { backgroundColor: colors.cardBackground }]}
+      tintColor={colors.cardBackground}
+    >
       <Text style={[styles.itemTitle, { color: colors.textPrimary }]}>{item.title}</Text>
       <View style={styles.dueDateContainer}>
         <View style={styles.dueDateItem}>
@@ -127,13 +152,13 @@ const TaskItem = ({ item }: { item: ITask }) => {
                 styles.chip,
                 {
                   backgroundColor: colors.primarySoft,
-                  borderColor: colors.primary,
+                  borderColor: colors.textPrimary,
                   marginLeft: visibleTags.length === 0 ? 0 : -12,
                   zIndex: visibleTags.length + 1,
                 },
               ]}
             >
-              <Text style={[styles.chipText, { color: colors.primaryDark }]} numberOfLines={1}>
+              <Text style={[styles.chipText, { color: colors.textPrimary }]} numberOfLines={1}>
                 {`+${remaining}`}
               </Text>
             </View>
@@ -143,7 +168,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
           style={[
             styles.statusPill,
             {
-              backgroundColor: 'transparent',
+              backgroundColor: colors.cardBackground,
               borderWidth: Border.thin,
               borderColor: colors.textPrimary,
               color: colors.textPrimary,
@@ -157,10 +182,15 @@ const TaskItem = ({ item }: { item: ITask }) => {
   );
 };
 
-const TaskListEmpty = () => {
+const TaskListEmpty = ({ fullHeight = false }: { fullHeight?: boolean }) => {
   const colors = useThemeColors();
   return (
-    <GlassView style={styles.emptyStateContainer}>
+    <GlassView
+      style={[
+        styles.emptyStateContainer,
+        { height: Dimensions.get('window').height * (fullHeight ? 0.75 : 0.5) },
+      ]}
+    >
       <Ionicons name="folder-open-outline" size={90} color="black" />
       <Text style={[styles.emptyStateTitle, { color: colors.textPrimary }]}>
         No tasks available.
@@ -187,9 +217,7 @@ const TaskItems = ({
 }) => {
   const colors = useThemeColors();
   const insets = useSafeAreaInsets?.() ?? { bottom: 0 };
-  if (items.length === 0) {
-    return <TaskListEmpty />;
-  }
+
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
@@ -201,8 +229,12 @@ const TaskItems = ({
       }}
       style={[
         styles.itemsContainer,
-        { height: Dimensions.get('window').height * (fullHeight ? 1 : 0.6) },
+        {
+          height: Dimensions.get('window').height * (fullHeight ? 1 : 0.6),
+          backgroundColor: colors.background,
+        },
       ]}
+      ListEmptyComponent={<TaskListEmpty fullHeight={fullHeight} />}
       keyExtractor={(item) => item.id.toString()}
     />
   );
@@ -228,12 +260,28 @@ const styles = StyleSheet.create({
     ...TextStyles.title5,
   },
   datePicker: {
-    borderWidth: 1,
-    width: '20%',
+    borderWidth: Border.hairline,
+    width: '25%',
     borderRadius: Radius.md,
+    padding: Spacing.sm,
   },
   date: {
-    ...TextStyles.body,
+    ...TextStyles.bodySmall,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  pickerContainer: {
+    borderRadius: 12,
+    padding: 8,
+    // min width so picker isn't too narrow on small screens
+    minWidth: 280,
+    // let the picker size itself vertically
+    overflow: 'hidden',
   },
   emptyStateContainer: {
     display: 'flex',
@@ -242,7 +290,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: Card.paddingSm,
     borderRadius: Radius.md,
-    height: Dimensions.get('window').height * 0.5,
     gap: Spacing.lg,
   },
   emptyStateTitle: {

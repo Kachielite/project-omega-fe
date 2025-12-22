@@ -8,14 +8,20 @@ import { GlassView } from 'expo-glass-effect';
 import { Ionicons } from '@expo/vector-icons';
 import {
   TaskItems,
+  TaskListDatePicker,
   TaskListHeader,
   TaskListTitle,
   TaskListWrapper,
 } from '@/features/task/components/task-list';
+import useTaskStore from '@/features/task/state';
 import { TASK_DATA } from '@/core/data/task';
 
 export default function TasksPage() {
   const colors = useThemeColors();
+  const { query, setQuery } = useTaskStore();
+  const onDateChange = (date: string) => {
+    setQuery({ ...query, due_date: date });
+  };
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
@@ -29,6 +35,10 @@ export default function TasksPage() {
       <TaskListWrapper>
         <TaskListHeader>
           <TaskListTitle title="" />
+          <TaskListDatePicker
+            date={new Date(query.due_date as string)}
+            onDateChange={onDateChange}
+          />
         </TaskListHeader>
         <TaskItems items={TASK_DATA} fullHeight bottomPadding={250} />
       </TaskListWrapper>

@@ -24,6 +24,7 @@ const useTaskStore = create<TaskStore>()(
       query: {
         page: 1,
         limit: 10,
+        due_date: new Date().toISOString(),
       },
       setQuery: (query: ITaskQueryParams) => set({ query }),
     }),

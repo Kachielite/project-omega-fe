@@ -17,9 +17,9 @@ const useFetchTasks = () => {
   const queryRequest: ITaskQueryParams = {
     page: query.page,
     limit: query.limit,
+    due_date: query.due_date,
     ...(query.status ? { status: query.status } : {}),
     ...(query.priority ? { priority: query.priority } : {}),
-    ...(query.due_date ? { due_date: query.due_date } : {}),
     ...(query.tags ? { tags: query.tags } : {}),
     ...(query.sort_by ? { sort_by: query.sort_by } : {}),
     ...(query.sort_order ? { sort_order: query.sort_order } : {}),
