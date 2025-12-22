@@ -41,6 +41,6 @@ export const DarkColors = {
   taskRed: '#E06B60',
 
   // Card colors
-  cardBackground: '#303135',
+  cardBackground: '#151A21',
   cardBorder: '#2A2E38',
 };

@@ -81,6 +81,17 @@ export const TextStyles = {
     lineHeight: LineHeight.md,
   },
 
+  bodySmall: {
+    fontFamily: Fonts.regular,
+    fontSize: FontSize.sm,
+    lineHeight: LineHeight.sm,
+  },
+  bodyExtraSmall: {
+    fontFamily: Fonts.regular,
+    fontSize: FontSize.xs,
+    lineHeight: LineHeight.xs,
+  },
+
   caption: {
     fontFamily: Fonts.regular,
     fontSize: FontSize.sm,

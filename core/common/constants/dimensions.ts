@@ -20,6 +20,8 @@ export const Spacing = {
   lg: 16,
   xl: 24,
   xxl: 32,
+  '3xl': 40,
+  '4xl': 48,
 };
 
 export const Radius = {

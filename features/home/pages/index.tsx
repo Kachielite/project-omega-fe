@@ -12,6 +12,7 @@ import {
   TaskSeeAll,
 } from '@/features/task/components/task-list';
 import { Spacing } from '@/core/common/constants/dimensions';
+import { TASK_DATA } from '@/core/data/task';
 
 export default function HomePage() {
   const colors = useThemeColors();
@@ -24,7 +25,7 @@ export default function HomePage() {
           <TaskListTitle title="Today's Tasks" />
           <TaskSeeAll onPress={() => {}} />
         </TaskListHeader>
-        <TaskItems items={[]} />
+        <TaskItems items={TASK_DATA} />
       </TaskListWrapper>
     </SafeAreaView>
   );

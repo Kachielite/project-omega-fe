@@ -1,6 +1,6 @@
 import { ITask, ITaskPriority, ITaskStatus } from '@/features/task/interfaces';
 
-const TASK_DATA: ITask[] = [
+export const TASK_DATA: ITask[] = [
   {
     id: 1,
     user_id: 101,
