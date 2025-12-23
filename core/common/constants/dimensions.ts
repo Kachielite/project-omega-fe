@@ -70,6 +70,15 @@ export const Input = {
   radius: Radius.sm,
 };
 
+export const TextAreaInput = {
+  minHeight: 100,
+  paddingHorizontal: 14,
+  paddingVertical: 12,
+
+  gap: 8,
+  radius: Radius.sm,
+};
+
 export const Shadow = {
   sm: {
     shadowColor: '#000',

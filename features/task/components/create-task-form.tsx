@@ -3,6 +3,7 @@ import React from 'react';
 import useCreateTask from '@/features/task/hooks/use-create-task';
 import CustomTextInput from '@/core/components/form/custom-text-input';
 import { Spacing } from '@/core/common/constants/dimensions';
+import CustomTextAreaInput from '@/core/components/form/custom-text-area-input';
 
 export default function CreateTaskForm() {
   const { taskForm } = useCreateTask();
@@ -15,11 +16,12 @@ export default function CreateTaskForm() {
         formController={taskForm}
         required
       />
-      <CustomTextInput
+      <CustomTextAreaInput
         id="description"
         label="Description"
         placeholder="Enter task description"
         formController={taskForm}
+        numberOfLines={14}
       />
     </View>
   );
