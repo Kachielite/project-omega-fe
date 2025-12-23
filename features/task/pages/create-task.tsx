@@ -3,22 +3,14 @@ import React from 'react';
 import { ModalContainer } from '@/core/common/constants/dimensions';
 import useThemeColors from '@/core/common/hooks/use-theme-colors';
 import ModalHeader from '@/core/components/model-header';
-import CustomTextInput from '@/core/components/form/custom-text-input';
-import useCreateTask from '@/features/task/hooks/use-create-task';
+import CreateTaskForm from '@/features/task/components/create-task-form';
 
 export default function CreateTaskPage() {
   const colors = useThemeColors();
-  const { taskForm } = useCreateTask();
   return (
     <View style={[styles.modelContainer, { backgroundColor: colors.background }]}>
       <ModalHeader title="Create Task" />
-      <CustomTextInput
-        id="title"
-        label="Title"
-        placeholder="Enter task title"
-        formController={taskForm}
-        required
-      />
+      <CreateTaskForm />
     </View>
   );
 }

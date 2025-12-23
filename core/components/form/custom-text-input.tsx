@@ -53,7 +53,6 @@ export default function CustomTextInput<T extends FieldValues>({
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'column',
     gap: Spacing.sm,
   },
