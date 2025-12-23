@@ -109,4 +109,9 @@ export const TextStyles = {
     fontSize: FontSize.sm,
     lineHeight: LineHeight.sm,
   },
+  error: {
+    fontFamily: Fonts.regular,
+    fontSize: FontSize.xs,
+    lineHeight: LineHeight.sm,
+  },
 };

@@ -1,7 +1,6 @@
 export const LightColors = {
   background: '#F7F9FC',
   surface: '#FFFFFF',
-  border: '#E4E7EC',
 
   textPrimary: '#0F1115',
   textSecondary: '#5F6472',
@@ -20,12 +19,15 @@ export const LightColors = {
   // Card colors
   cardBackground: '#FFFFFF',
   cardBorder: '#E4E7EC',
+
+  // Input
+  border: '#0F1115',
+  error: '#E06B60',
 };
 
 export const DarkColors = {
   background: '#0F1115', // charcoal, not pure black
   surface: '#181A20',
-  border: '#2A2E38',
 
   textPrimary: '#FFFFFF',
   textSecondary: '#B3B8C4',
@@ -43,4 +45,8 @@ export const DarkColors = {
   // Card colors
   cardBackground: '#151A21',
   cardBorder: '#2A2E38',
+
+  // Input
+  border: '#FFFFFF',
+  error: '#E06B60',
 };
