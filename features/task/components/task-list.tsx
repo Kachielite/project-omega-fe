@@ -149,7 +149,7 @@ const TaskItem = ({ item }: { item: ITask }) => {
               style={[
                 styles.chip,
                 {
-                  backgroundColor: colors.primarySoft,
+                  backgroundColor: colors.cardBackground,
                   borderColor: colors.textPrimary,
                   marginLeft: visibleTags.length === 0 ? 0 : -12,
                   zIndex: visibleTags.length + 1,

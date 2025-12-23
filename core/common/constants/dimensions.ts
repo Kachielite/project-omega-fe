@@ -92,3 +92,9 @@ export const ScreenContainer = {
   paddingHorizontal: 12,
   gap: Spacing.lg,
 };
+
+export const ModalContainer = {
+  flex: 1,
+  padding: Spacing.lg,
+  gap: Spacing.lg,
+};

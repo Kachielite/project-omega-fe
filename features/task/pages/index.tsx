@@ -15,8 +15,10 @@ import {
 } from '@/features/task/components/task-list';
 import useTaskStore from '@/features/task/state';
 import { TASK_DATA } from '@/core/data/task';
+import { useRouter } from 'expo-router';
 
 export default function TasksPage() {
+  const router = useRouter();
   const colors = useThemeColors();
   const { query, setQuery } = useTaskStore();
   const onDateChange = (date: string) => {
@@ -27,7 +29,7 @@ export default function TasksPage() {
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <ScreenHeader title="Tasks">
         <GlassView tintColor={colors.cardBackground} isInteractive style={[styles.addBtn]}>
-          <Pressable onPress={() => {}}>
+          <Pressable onPress={() => router.push('/(app)/(auth)/(models)/task/add')}>
             <Ionicons name="add-sharp" size={24} color={colors.textPrimary} />
           </Pressable>
         </GlassView>

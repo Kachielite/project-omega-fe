@@ -6,9 +6,9 @@ const AuthLayout = () => {
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
-        name="(menus)/add"
+        name="(models)/task/add"
         options={{
-          presentation: 'formSheet',
+          presentation: 'modal',
           headerShown: false,
           title: 'Add',
         }}
