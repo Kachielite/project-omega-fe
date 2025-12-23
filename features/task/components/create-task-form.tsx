@@ -4,6 +4,7 @@ import useCreateTask from '@/features/task/hooks/use-create-task';
 import CustomTextInput from '@/core/components/form/custom-text-input';
 import { Spacing } from '@/core/common/constants/dimensions';
 import CustomTextAreaInput from '@/core/components/form/custom-text-area-input';
+import CustomDatePicker from '@/core/components/form/custom-date-picker';
 
 export default function CreateTaskForm() {
   const { taskForm } = useCreateTask();
@@ -22,6 +23,12 @@ export default function CreateTaskForm() {
         placeholder="Enter task description"
         formController={taskForm}
         numberOfLines={14}
+      />
+      <CustomDatePicker
+        id="due_date"
+        label="Due Date"
+        placeholder="Enter due date"
+        formController={taskForm}
       />
     </View>
   );
